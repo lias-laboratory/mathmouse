@@ -206,10 +206,10 @@ Details the license agreement of EnerQuery: [LICENCE](LICENCE)
 
 ## Historic Contributors
 
-* [Cyrille PONCHATEAU]:https://www.lias-lab.fr/members/cyrilleponchateau/
+* [Cyrille PONCHATEAU](https://www.lias-lab.fr/members/cyrilleponchateau/)
 * [Ladjel BELLATRECHE](https://www.lias-lab.fr/members/bellatreche/)
 * [Mickael BARON](https://www.lias-lab.fr/members/mickaelbaron/)
-* [Carlos ORDONEZ]:(http://www2.cs.uh.edu/~ordonez/)
+* [Carlos ORDONEZ](http://www2.cs.uh.edu/~ordonez/)
 
 ## Code Analysis
 
