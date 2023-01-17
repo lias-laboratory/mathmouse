@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="differential-equation" type="differentialEquationType" />
+<xs:element name="formula" type="formulaType" />
+<xs:element name="binary-operator" type="binaryOperatorType" />
+<xs:element name="unary-operator" type="unaryOperatorType" />
+<xs:element name="function" type="functionType" />
+<xs:element name="number" type="numberType" />
+<xs:element name="variable" type="variableType" />
+<xs:element name="parameters-sets" type="parametersSetsType" />
+<xs:element name="parameters-set" type="parametersSetType" />
+<xs:element name="initial-values" type="initialValuesType" />
+<xs:element name="initial-value" type="initialValueType" />
+<xs:element name="variables-values" type="variablesValuesType" />
+<xs:element name="variable-value" type="variableValueType" />
+<xs:element name="input-functions" type="inputFunctionsType" />
+<xs:element name="input-function" type="inputFunctionType" />
+
+<xs:complexType name="differentialEquationType">
+	<xs:sequence>
+		<xs:element ref="formula" />
+		<xs:element ref="parameters-sets" />
+	</xs:sequence>
+	<xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+	<xs:attribute name="group" type="xs:token" use="optional" default="Default" /> 
+</xs:complexType>
+
+<xs:complexType name="formulaType">
+	<xs:sequence>
+		<xs:element ref="binary-operator" />
+	</xs:sequence>
+	<xs:attribute name="numberOfVariables" type="xs:integer" use="required" />
+	<xs:attribute name="numberOfInputFunctions" type="xs:integer" use="required" />
+	<xs:attribute name="outputName" type="xs:NMTOKEN" use="required" />
+</xs:complexType>
+
+<xs:complexType name="binaryOperatorType">
+	<xs:sequence>
+		<xs:choice minOccurs="2" maxOccurs="2">
+			<xs:element ref="binary-operator"></xs:element>
+			<xs:element ref="unary-operator"></xs:element>
+			<xs:element ref="function"></xs:element>
+			<xs:element ref="number"></xs:element>
+			<xs:element ref="variable"></xs:element>
+		</xs:choice>
+	</xs:sequence>
+	<xs:attribute name="value" type="binaryOperatorEnum" />
+</xs:complexType>
+
+<xs:simpleType name="binaryOperatorEnum">
+	<xs:restriction base="xs:token">
+		<xs:enumeration value="-" />
+		<xs:enumeration value="+" />
+		<xs:enumeration value="*" />
+		<xs:enumeration value="/" />
+		<xs:enumeration value="=" />
+		<xs:enumeration value="√" />
+		<xs:enumeration value="^" />
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="unaryOperatorType">
+	<xs:sequence>
+		<xs:choice>
+			<xs:element ref="binary-operator"></xs:element>
+			<xs:element ref="unary-operator"></xs:element>
+			<xs:element ref="function"></xs:element>
+			<xs:element ref="number"></xs:element>
+			<xs:element ref="variable"></xs:element>
+		</xs:choice>
+	</xs:sequence>
+	<xs:attribute name="value" type="unaryOperatorEnum" />
+</xs:complexType>
+
+<xs:simpleType name="unaryOperatorEnum">
+	<xs:restriction base="xs:token">
+		<xs:enumeration value="!" />
+		<xs:enumeration value="√" />
+		<xs:enumeration value="-" />
+		<xs:enumeration value="+" />
+		<xs:enumeration value="||" />
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="functionType">
+	<xs:choice minOccurs="0">
+		<xs:element ref="binary-operator" />
+		<xs:element ref="unary-operator" />
+		<xs:element ref="function" />
+		<xs:element ref="number" />
+		<xs:element ref="variable" />
+	</xs:choice>
+	<xs:attribute name="value" type="xs:NMTOKEN" use="required" />
+	<xs:attribute name="deriv" type="xs:integer" use="required" />
+	<xs:attribute name="role" type="roleEnum" use="optional" />
+</xs:complexType>
+
+<xs:simpleType name="roleEnum">
+	<xs:restriction base="xs:NMTOKEN">
+		<xs:enumeration value="equationInput" />
+		<xs:enumeration value="equationOutput" />
+		<xs:enumeration value="basicMathFunction" />
+		<xs:enumeration value="basicUserDefinedFunction" />
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="numberType">
+	<xs:attribute name="value" type="xs:double" use="required" />
+</xs:complexType>
+
+<xs:complexType name="variableType">
+	<xs:attribute name="value" type="xs:NMTOKEN" use="required" />
+</xs:complexType>
+
+<xs:complexType name="parametersSetsType">
+	<xs:sequence>
+		<xs:element ref="parameters-set" maxOccurs="unbounded" />
+	</xs:sequence>
+	<xs:attribute name="numberOfParametersSets" type="xs:integer" use="required" />
+</xs:complexType>
+
+<xs:complexType name="parametersSetType">
+	<xs:sequence>
+		<xs:element ref="initial-values" />
+		<xs:element ref="variables-values" />
+		<xs:element ref="input-functions" />
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="initialValuesType">
+	<xs:sequence>
+		<xs:element ref="initial-value" maxOccurs="unbounded" />
+	</xs:sequence>
+	<xs:attribute name="numberOfInitialValues" type="xs:integer" use="required" />
+</xs:complexType>
+
+<xs:complexType name="initialValueType">
+	<xs:attribute name="name" type="xs:NMTOKEN" />
+	<xs:attribute name="value" type="xs:double" />
+	<xs:attribute name="deriv" type="xs:integer" />
+</xs:complexType>
+
+<xs:complexType name="variablesValuesType">
+	<xs:sequence>
+		<xs:element ref="variable-value" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+	<xs:attribute name="numberOfVariables" type="xs:integer" use="required" />
+</xs:complexType>
+
+<xs:complexType name="variableValueType">
+	<xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+	<xs:attribute name="value" type="xs:double" use="required" />
+</xs:complexType>
+
+<xs:complexType name="inputFunctionsType">
+	<xs:sequence>
+		<xs:element ref="input-function" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+	<xs:attribute name="numberOfInputFunctions" type="xs:integer" use="required" />
+</xs:complexType>
+
+<xs:complexType name="inputFunctionType">
+	<xs:sequence>
+		<xs:element ref="time-series" />
+	</xs:sequence>
+	<xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+	<xs:attribute name="deriv" type="xs:integer" use="required" />
+</xs:complexType>
+
+<xs:element name="time-series">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="time-value" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="startTime" type="REAL-NUMBER" use="optional" />
+    <xs:attribute name="endTime" type="REAL-NUMBER" use="optional" />
+	<xs:attribute name="interpolationMethod" type="INTERPOLATION-METHOD" use="required" />
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="time-value">
+  <xs:complexType> 
+    <xs:attribute name="time" type="REAL-NUMBER" use="required"/>
+    <xs:attribute name="value" type="REAL-NUMBER" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="INTERPOLATION-METHOD">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="none"/>
+    <xs:enumeration value="linear"/>
+    <xs:enumeration value="exponentialSpline"/>
+    <xs:enumeration value="cubicSpline"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="REAL-NUMBER">
+  <xs:restriction base="xs:double">
+  </xs:restriction>
+</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,46 @@
+rabbitmq:
+  build: microservices-src/javarabbitmq
+  hostname: fr_ensma_lias
+  container_name: rabbitmq
+  ports:
+    - "15672:15672"
+    - "5672:5672"
+  labels:
+    liasvagrant-microservices-docker-demo.description: "RabbitMQ server, with management plugin"
+
+mathmouse_db:
+  build: microservices-src/mathmousedb
+  hostname: fr_ensma_lias
+  container_name: mathmouse_db
+  ports:
+    - "5432:5432"
+  labels:
+    lias-mathematical-models-warehouse.description: "Postgres RDBMS service implementation of the Mathematical Models Warehouse"
+  environment:
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_USER=db_admin
+
+db_core:
+  build: microservices-src/mathmouse/dbcore
+  hostname: fr_ensma_lias
+  links:
+    - rabbitmq
+    - mathmouse_db
+
+comparator_manager:
+  build: microservices-src/mathmouse/comparatormanager
+  hostname: fr_ensma_lias
+  links:
+    - rabbitmq
+
+generator:
+  build: microservices-src/mathmouse/generator
+  hostname: fr_ensma_lias
+  links:
+    - rabbitmq
+
+comparator:
+  build: microservices-src/mathmouse/comparator
+  hostname: fr_ensma_lias
+  links:
+    - rabbitmq

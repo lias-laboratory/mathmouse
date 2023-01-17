@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE differentialequation SYSTEM "../differentialequation.dtd">
+<differentialequation>
+	<equation>
+		<operator value="=">
+			<operator value="+">
+				<operator value="+">
+					<operator value="*">
+						<operator value="/">
+							<number value="1" />
+							<operator value="^">
+								<variable value="w" />
+								<number value="2" />
+							</operator>
+						</operator>
+						<function value="y" deriv="2" />
+					</operator>
+					<operator value="*">
+						<operator value="/">
+							<operator value="*">
+								<number value="2" />
+								<variable value="m" />
+							</operator>
+							<variable value="w"/>
+						</operator>
+						<function value="y" deriv="1" />
+					</operator>
+				</operator>
+				<function value="y" deriv="0" />
+			</operator>
+			<operator value="*">
+				<variable value="K"/>
+				<function value="u"/>
+			</operator>
+		</operator>
+	</equation>
+	<systems>
+		<system>
+			<mapping>
+				<map name="w" value="0.1" />
+				<map name="K" value="0.8" />
+				<map name="m" value="0.4" />
+			</mapping>
+			<input>
+				<inputFunction name="u" file="resources\input\outDiffEq3.txt" />
+			</input>
+			<initial value="0.0" />
+			<step value="1.0" />
+		</system>
+	</systems>
+</differentialequation>

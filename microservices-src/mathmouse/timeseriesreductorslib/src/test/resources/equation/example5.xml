@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE differentialequation SYSTEM "../differentialequation.dtd">
+<differentialequation>
+	<equation>
+		<operator value="=">
+			<operator value="+">
+				<operator value="/">
+					<operator value="*">
+						<number value="4" />
+						<number value="5"/>
+					</operator>
+					<number value="7" />
+				</operator>
+				<function value="y" />
+			</operator>
+			<operator value="*">
+				<number value="8" />
+				<function value="u" />
+			</operator>
+		</operator>
+	</equation>
+	<systems>
+		<system>
+			<initial value ="0"/>
+			<step value="1.0"/>
+		</system>
+		<system>
+			<initial value ="0"/>
+			<step value="1.0"/>
+		</system>
+	</systems>
+</differentialequation>
