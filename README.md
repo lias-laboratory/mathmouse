@@ -202,13 +202,13 @@ If you want to add them quickly in the database, you will have to close the GUI,
 
 ## Software licence agreement
 
-Details the license agreement of EnerQuery: [LICENCE](LICENCE)
+Details the license agreement of Mathmouse: [LICENCE](LICENCE)
 
-## Historic Contributors
+## Historic Contributors (core developers first followed by alphabetical order)
 
-* [Cyrille PONCHATEAU](https://www.lias-lab.fr/members/cyrilleponchateau/)
-* [Ladjel BELLATRECHE](https://www.lias-lab.fr/members/bellatreche/)
+* [Cyrille PONCHATEAU (core developer](https://www.lias-lab.fr/members/cyrilleponchateau/)
 * [Mickael BARON](https://www.lias-lab.fr/members/mickaelbaron/)
+* [Ladjel BELLATRECHE](https://www.lias-lab.fr/members/bellatreche/)
 * [Carlos ORDONEZ](http://www2.cs.uh.edu/~ordonez/)
 
 ## Code Analysis
