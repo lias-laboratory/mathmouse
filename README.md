@@ -202,7 +202,7 @@ If you want to add them quickly in the database, you will have to close the GUI,
 
 ## Software licence agreement
 
-Details the license agreement of Mathmouse: [LICENCE](LICENCE)
+Details the license agreement of Mathmouse: [LICENSE](LICENSE)
 
 ## Historic Contributors (core developers first followed by alphabetical order)
 
