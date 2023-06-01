@@ -200,7 +200,7 @@ If you want to add them quickly in the database, you will have to close the GUI,
 
 * Cyrille PONCHATEAU, Ladjel BELLATRECHE, Mickael BARON, Entrepôt de Données dans l'ère Data Science : De la Donnée au Modèle, 12émes Journées Francophone sur les Entrepôts de Données et analyse en ligne (EDA 2016), edited by RNTI, 2016, pp. 65-79
 
-## Software licence agreement
+## Software license agreement
 
 Details the license agreement of Mathmouse: [LICENSE](LICENSE)
 
